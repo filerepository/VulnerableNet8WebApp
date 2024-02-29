@@ -1,0 +1,45 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "Admin - Forbidden";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Access denied - Only internal users are allowed here</h1>
+    <p>
+        You are originating from an untrusted source, only users from the local network are permitted.
+        <!--Only allow localhost access-->
+    </p>
+    <p>
+        Your IP as we see it:  @Html.Raw(ViewData["ClientIp"])
+        <!--Only allow localhost access-->
+    </p>
+    <p>
+        <button id="toggleErrorDetails">Show detailed error information if requested by our support</button>
+
+        <div id="errorDetails" style="display: none;">
+            <h4>Request Headers</h4>
+            <ul>
+                @foreach (var header in Model)
+                {
+                    <li>@Html.Raw(header)</li>
+                }
+            </ul>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('toggleErrorDetails').addEventListener('click', function () {
+                    var errorDetails = document.getElementById('errorDetails');
+                    if (errorDetails.style.display === 'none') {
+                        errorDetails.style.display = 'block';
+                    } else {
+                        errorDetails.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
+    </p>
+</div>

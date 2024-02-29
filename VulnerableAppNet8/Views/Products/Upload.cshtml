@@ -1,0 +1,31 @@
+﻿@model VulnerableAppNet8.Models.Product
+
+@{
+    ViewData["Title"] = "Upload file with products";
+}
+
+<h1>Bulk create products</h1>
+
+<h4>Upload a file with products to create multiple products</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data" asp-action="Upload">
+            <div class="form-group">
+                <label for="file">Choose product XML file to import</label>                
+                <input type="file" class="form-control" name="file" accept=".xml" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-spacing">Upload</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
